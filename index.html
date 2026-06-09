@@ -262,10 +262,8 @@
             <p class="text-xs text-gray-500 mt-2">為方便我們為您保留席位，請於2026年7月20日前撥冗填寫此回函，非常感謝您。</p>
         </div>
 
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(typeof submitted !== 'undefined' && submitted) { showSuccessMessage(); }"></iframe>
-
         <div class="relative max-w-2xl mx-auto">
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSdGePhFaw3k_LdJeK5dMED3KAmUqDaAYY8dXIDASuf_Wwf0Mw/formResponse" method="POST" target="hidden_iframe" id="weddingForm" class="space-y-8 bg-white rounded-3xl p-8 md:p-10 shadow-[0_15px_40px_rgba(44,42,41,0.03)] border border-[#e2d4c9]/30 transition-opacity duration-300">
+            <form id="weddingForm" class="space-y-8 bg-white rounded-3xl p-8 md:p-10 shadow-[0_15px_40px_rgba(44,42,41,0.03)] border border-[#e2d4c9]/30 transition-opacity duration-300">
                 
                 <!-- 姓名 entry.834593186 -->
                 <div class="space-y-2">
@@ -403,19 +401,26 @@
     </footer>
 
     <script>
-        var submitted = false;
+        const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdGePhFaw3k_LdJeK5dMED3KAmUqDaAYY8dXIDASuf_Wwf0Mw/formResponse';
 
         const rsvpForm = document.getElementById('weddingForm');
-        rsvpForm.addEventListener('submit', () => {
-            submitted = true;
+        rsvpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
             const submitBtn = document.getElementById('submitBtn');
-            setTimeout(() => {
-                showSuccessMessage();
-            }, 1500);
-            setTimeout(() => {
-                submitBtn.disabled = true;
-                submitBtn.innerText = "傳送中...";
-            }, 50);
+            submitBtn.disabled = true;
+            submitBtn.innerText = "傳送中...";
+
+            const formData = new FormData(rsvpForm);
+
+            try {
+                await fetch(FORM_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+            } catch(err) {}
+
+            showSuccessMessage();
         });
 
         function showSuccessMessage() {
