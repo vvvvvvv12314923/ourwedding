@@ -409,8 +409,8 @@
                     <textarea id="wishes" name="entry.390886571" rows="3" placeholder="請在此留下您的祝福話語..." class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition"></textarea>
                 </div>
 
-                <!-- 點擊觸發 submitted=true -->
-                <button type="submit" id="submitBtn" onclick="submitted=true" class="w-full bg-morandi-gold hover:bg-morandi-gold/90 text-white font-medium py-4 px-6 rounded-2xl shadow-lg transition-all tracking-widest text-sm">
+                <!-- 傳送按鈕 (移除了 onclick 以免提前將 submitted 狀態改為 true 導致 HTML5 欄位檢驗攔截失敗時誤判成功) -->
+                <button type="submit" id="submitBtn" class="w-full bg-morandi-gold hover:bg-morandi-gold/90 text-white font-medium py-4 px-6 rounded-2xl shadow-lg transition-all tracking-widest text-sm">
                     傳送回函 SUBMIT
                 </button>
             </form>
@@ -431,8 +431,13 @@
         rsvpForm.addEventListener('submit', () => {
             submitted = true;
             const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = "傳送中...";
+            // 💡 解決關鍵傳送問題：使用 setTimeout 異步禁用按鈕
+            // 這能確保瀏覽器先把 Form POST 請求成功送往 hidden_iframe 之後，才將按鈕設為 disabled。
+            // 如果同步設為 disabled，部分現代瀏覽器會判定提交動作已失效，直接在發送前將其攔截中斷。
+            setTimeout(() => {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "傳送中...";
+            }, 50);
         });
 
         // 當資料成功傳送到 Google 後，控制網頁顯示你準備好的提示並自動重載
@@ -471,8 +476,10 @@
                 
                 vegInput.value = 0;
                 chairInput.value = 0;
-                dietSelect.value = "";
-                dietSelect.removeAttribute('required'); // 確保不出席時不阻擋表單送出
+                // 💡 解決後台必填阻擋問題：
+                // 當不克出席（0人）時，自動將隱藏的飲食欄位選為 "葷食"，以防止 Google 表單後台因為「飲食需求必填問題為空」而默默丟棄該筆資料
+                dietSelect.value = "葷食";
+                dietSelect.removeAttribute('required'); // 確保不出席時不阻擋前端表單送出
             } else {
                 // 出席時：顯示飲食選擇與座椅選擇
                 if (sectionDiet) sectionDiet.classList.remove('hidden');
