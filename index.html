@@ -282,32 +282,32 @@
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
         <div class="relative max-w-2xl mx-auto">
-            <!-- 填寫表單 (已精準更新為您指定的全新 Google Form formResponse 目標提交路徑) -->
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSdGePhFaw3k_LdJeK5dMED3KAmUqDaAYY8dXIDASuf_Wwf0Mw/formResponse" method="POST" target="hidden_iframe" id="rsvpForm" class="space-y-8 bg-white rounded-3xl p-8 md:p-10 shadow-[0_15px_40px_rgba(44,42,41,0.03)] border border-[#e2d4c9]/30 transition-opacity duration-300">
+            <!-- 填寫表單 (已精準對接您提供的全新 Google Form weddingForm 目標提交路徑，保留高質感視覺與無痕送出功能) -->
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSdGePhFaw3k_LdJeK5dMED3KAmUqDaAYY8dXIDASuf_Wwf0Mw/formResponse" method="POST" target="hidden_iframe" id="weddingForm" class="space-y-8 bg-white rounded-3xl p-8 md:p-10 shadow-[0_15px_40px_rgba(44,42,41,0.03)] border border-[#e2d4c9]/30 transition-opacity duration-300">
                 
-                <!-- 姓名 (對接: entry.834593186) -->
+                <!-- 姓名 (對接: entry.728958742) -->
                 <div class="space-y-2">
-                    <label for="name" class="block text-xs font-semibold text-gray-700 tracking-wider">
+                    <label class="block text-xs font-semibold text-gray-700 tracking-wider">
                         姓名 NAME <span class="text-red-400">*</span>
                     </label>
-                    <input type="text" id="name" name="entry.834593186" required placeholder="請輸入您的真實姓名" class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition">
+                    <input type="text" name="entry.728958742" required placeholder="請輸入您的真實姓名" class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition">
                 </div>
 
-                <!-- 聯絡電話 (對接: entry.1473500109) -->
+                <!-- 聯絡電話 (對接: entry.669864234) -->
                 <div class="space-y-2">
-                    <label for="phone" class="block text-xs font-semibold text-gray-700 tracking-wider">
+                    <label class="block text-xs font-semibold text-gray-700 tracking-wider">
                         聯絡電話 PHONE <span class="text-red-400">*</span>
                     </label>
-                    <input type="tel" id="phone" name="entry.1473500109" required placeholder="請輸入您的手機號碼" class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition">
+                    <input type="tel" name="entry.669864234" required placeholder="請輸入您的手機號碼" class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition">
                 </div>
 
-                <!-- 與新人的關係 (對接: entry.295294185) 下拉選單 -->
+                <!-- 與新人的關係 (對接: entry.1741517865) 下拉選單 -->
                 <div class="space-y-2">
-                    <label for="relationship" class="block text-xs font-semibold text-gray-700 tracking-wider">
+                    <label class="block text-xs font-semibold text-gray-700 tracking-wider">
                         與新人的關係 RELATIONSHIP <span class="text-red-400">*</span>
                     </label>
                     <div class="relative">
-                        <select id="relationship" name="entry.295294185" required class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-800 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition appearance-none cursor-pointer">
+                        <select name="entry.1741517865" required class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-800 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition appearance-none cursor-pointer">
                             <option value="" disabled selected>請選擇關係</option>
                             <option value="女方家人親戚">女方家人親戚</option>
                             <option value="女方好友">女方好友</option>
@@ -320,7 +320,7 @@
                     </div>
                 </div>
 
-                <!-- 預定出席人數 (對接: entry.1091229349) -->
+                <!-- 預定出席人數 (對接: entry.177002016) -->
                 <div class="space-y-2">
                     <label class="block text-xs font-semibold text-gray-700 tracking-wider">
                         預定出席人數 BANQUET GUESTS <span class="text-red-400">*</span>
@@ -335,22 +335,27 @@
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" id="attendees" name="entry.1091229349" value="0">
+                    <input type="hidden" id="attendees" name="entry.177002016" value="0">
                 </div>
 
                 <!-- 條件式顯示欄位（飲食需求、素食人數、兒童座椅） -->
                 <div id="conditional-fields" class="space-y-6">
-                    <!-- 飲食需求 (對接: entry.1223440642) -->
+                    <!-- 飲食需求 (對接: entry.1738739194) -->
                     <div id="section-diet" class="space-y-2 hidden">
-                        <label for="diet" class="block text-xs font-semibold text-gray-700 tracking-wider">飲食需求 DIETARY REQUIREMENT <span class="text-red-400">*</span></label>
-                        <select id="diet" name="entry.1223440642" onchange="handleStepperChange()" class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-800 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition appearance-none cursor-pointer">
-                            <option value="" disabled selected>請選擇主食需求</option>
-                            <option value="葷食">葷食</option>
-                            <option value="素食">素食</option>
-                        </select>
+                        <label class="block text-xs font-semibold text-gray-700 tracking-wider">飲食需求 DIETARY REQUIREMENT <span class="text-red-400">*</span></label>
+                        <div class="relative">
+                            <select id="diet" name="entry.1738739194" onchange="handleStepperChange()" class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 h-12 text-sm text-gray-800 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition appearance-none cursor-pointer">
+                                <option value="" disabled selected>請選擇主食需求</option>
+                                <option value="葷食">全葷食</option>
+                                <option value="包含素食">包含素食（請於下方填寫人數）</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                <svg class="fill-current h-4 w-4" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- 素食人數 (對接: entry.1543740507) -->
+                    <!-- 素食人數 (對接: entry.271378129) -->
                     <div id="section-veg-count" class="space-y-2 hidden">
                         <label class="block text-xs font-semibold text-gray-700 tracking-wider">
                             素食人數 VEGETARIAN GUESTS <span class="text-red-400">*</span>
@@ -369,10 +374,10 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="veg-count" name="entry.1543740507" value="0">
+                        <input type="hidden" id="veg-count" name="entry.271378129" value="0">
                     </div>
 
-                    <!-- 兒童座椅需求 (對接: entry.780990366) -->
+                    <!-- 兒童座椅需求 (對接: entry.44490333) -->
                     <div id="section-baby-chair" class="space-y-2 hidden">
                         <label class="block text-xs font-semibold text-gray-700 tracking-wider">
                             兒童座椅 BABY CHAIRS
@@ -391,19 +396,19 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="baby-chair" name="entry.780990366" value="0">
+                        <input type="hidden" id="baby-chair" name="entry.44490333" value="0">
                     </div>
                 </div>
 
-                <!-- 給新人的祝福 (對接: entry.1094528476) -->
+                <!-- 給新人的祝福 (對接: entry.390886571) -->
                 <div class="space-y-2">
                     <label for="wishes" class="block text-xs font-semibold text-gray-700 tracking-wider">
                         給新人的祝福 WISHES
                     </label>
-                    <textarea id="wishes" name="entry.1094528476" rows="3" placeholder="請在此留下您的祝福話語..." class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition"></textarea>
+                    <textarea id="wishes" name="entry.390886571" rows="3" placeholder="請在此留下您的祝福話語..." class="w-full bg-morandi-cream/20 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-morandi-gold focus:ring-1 focus:ring-morandi-gold transition"></textarea>
                 </div>
 
-                <button type="submit" id="submitBtn" class="w-full bg-morandi-gold hover:bg-morandi-gold/90 text-white font-medium py-4 px-6 rounded-2xl shadow-lg transition-all tracking-widest text-sm">
+                <button type="submit" id="submitBtn" onclick="submitted=true" class="w-full bg-morandi-gold hover:bg-morandi-gold/90 text-white font-medium py-4 px-6 rounded-2xl shadow-lg transition-all tracking-widest text-sm">
                     傳送回函 SUBMIT
                 </button>
             </form>
@@ -437,13 +442,13 @@
     </footer>
 
     <script>
-        // 追蹤表單是否送出
-        let formSubmitted = false;
+        // 初始化提交狀態
+        var submitted = false;
 
         // 表單送出監聽
-        const rsvpForm = document.getElementById('rsvpForm');
+        const rsvpForm = document.getElementById('weddingForm');
         rsvpForm.addEventListener('submit', () => {
-            formSubmitted = true;
+            submitted = true;
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
             submitBtn.innerText = "傳送中...";
@@ -452,8 +457,8 @@
         // 監聽 iframe 載入事件來判斷是否成功送出
         const hiddenIframe = document.getElementById('hidden_iframe');
         hiddenIframe.addEventListener('load', () => {
-            if (formSubmitted) {
-                // 顯示成功畫面
+            if (submitted) {
+                // 顯示高質感成功畫面 (替代簡單的 alert 彈窗，提供更完美的莫蘭迪打勾轉場)
                 const successOverlay = document.getElementById('successOverlay');
                 successOverlay.classList.remove('hidden');
                 successOverlay.classList.add('flex');
@@ -471,7 +476,7 @@
                 handleStepperChange();
 
                 // 重設送出狀態
-                formSubmitted = false;
+                submitted = false;
             }
         });
 
@@ -528,12 +533,12 @@
                 if (parseInt(vegInput.value) > num) vegInput.value = num;
                 if (parseInt(chairInput.value) > num) chairInput.value = num;
                 
-                // 飲食需求為「素食」時才顯示「素食人數」
-                if (dietSelect && dietSelect.value === "素食") {
+                // 飲食需求為「包含素食」時才顯示「素食人數」
+                if (dietSelect && dietSelect.value === "包含素食") {
                     if (sectionVegCount) sectionVegCount.classList.remove('hidden');
                 } else {
                     if (sectionVegCount) sectionVegCount.classList.add('hidden');
-                    vegInput.value = 0; // 若非素食則將素食人數歸零
+                    vegInput.value = 0; // 若非包含素食則將素食人數歸零
                 }
             }
             
